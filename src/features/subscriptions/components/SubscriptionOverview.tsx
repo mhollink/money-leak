@@ -39,9 +39,15 @@ function SubscriptionOverview({ subscriptions }: SubscriptionOverviewProps) {
         <SubscriptionsEmptyState />
       ) : (
         <ul className="subscription-list">
-          {activeSubscriptions.map((subscription) => (
-            <SubscriptionListItem key={subscription.id} subscription={subscription} />
-          ))}
+          {activeSubscriptions
+            .sort(
+              (a, b) =>
+                calculateMonthlyAmountInCents(b.amountInCents, b.billingFrequency) -
+                calculateMonthlyAmountInCents(a.amountInCents, a.billingFrequency),
+            )
+            .map((subscription) => (
+              <SubscriptionListItem key={subscription.id} subscription={subscription} />
+            ))}
         </ul>
       )}
     </section>

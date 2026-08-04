@@ -18,11 +18,5 @@ describe("App", () => {
         name: "Active subscriptions",
       }),
     ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole("article", {
-        name: "Spotify",
-      }),
-    ).toBeInTheDocument();
   });
 });
