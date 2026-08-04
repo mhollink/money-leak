@@ -1,21 +1,9 @@
-import { useState } from "react";
 import SubscriptionOverview from "../features/subscriptions/components/SubscriptionOverview";
-import { subscriptions as initialSubscriptions } from "../features/subscriptions/data/subscriptions";
-import { createSubscription } from "../features/subscriptions/domain/createSubscription";
-import type { NewSubscription, Subscription } from "../features/subscriptions/domain/types";
 import "./App.css";
+import { useSubscriptions } from "../features/subscriptions/hooks/useSubscriptions.ts";
 
 function App() {
-  const [subscriptions, setSubscriptions] = useState<Subscription[]>(() => [
-    ...initialSubscriptions,
-  ]);
-
-  function handleAddSubscription(newSubscription: NewSubscription) {
-    setSubscriptions((currentSubscriptions) => [
-      ...currentSubscriptions,
-      createSubscription(newSubscription),
-    ]);
-  }
+  const { subscriptions, addSubscription } = useSubscriptions();
 
   return (
     <div className="app-shell">
@@ -28,10 +16,7 @@ function App() {
       </header>
 
       <main className="app-content">
-        <SubscriptionOverview
-          subscriptions={subscriptions}
-          onAddSubscription={handleAddSubscription}
-        />
+        <SubscriptionOverview subscriptions={subscriptions} onAddSubscription={addSubscription} />
       </main>
 
       <footer className="app-footer">
