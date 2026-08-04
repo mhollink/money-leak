@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { formatMoney } from "../../../shared/money/formatMoney";
 import {
   calculateMonthlyAmountInCents,
@@ -5,15 +6,34 @@ import {
   getBillingFrequencyLabel,
 } from "../domain/subscriptionCalculations";
 import { getActiveSubscriptions } from "../domain/subscriptionSelectors";
-import type { Subscription } from "../domain/types";
+import type { NewSubscription, Subscription } from "../domain/types";
+import AddSubscriptionForm from "./AddSubscriptionForm";
 import "./SubscriptionOverview.css";
 
 type SubscriptionOverviewProps = Readonly<{
   subscriptions: readonly Subscription[];
+  onAddSubscription: (subscription: NewSubscription) => void;
 }>;
 
-function SubscriptionOverview({ subscriptions }: SubscriptionOverviewProps) {
+function SubscriptionOverview({ subscriptions, onAddSubscription }: SubscriptionOverviewProps) {
+  const [isAddFormOpen, setIsAddFormOpen] = useState(false);
+  const addButtonRef = useRef<HTMLButtonElement>(null);
+  const wasAddFormOpen = useRef(false);
+
   const activeSubscriptions = getActiveSubscriptions(subscriptions);
+
+  useEffect(() => {
+    if (wasAddFormOpen.current && !isAddFormOpen) {
+      addButtonRef.current?.focus();
+    }
+
+    wasAddFormOpen.current = isAddFormOpen;
+  }, [isAddFormOpen]);
+
+  function handleAddSubscription(newSubscription: NewSubscription) {
+    onAddSubscription(newSubscription);
+    setIsAddFormOpen(false);
+  }
 
   return (
     <section className="subscription-overview" aria-labelledby="subscriptions-heading">
@@ -29,11 +49,33 @@ function SubscriptionOverview({ subscriptions }: SubscriptionOverviewProps) {
           </p>
         </div>
 
-        <div className="subscription-overview__count">
-          <strong>{activeSubscriptions.length}</strong>
-          <span>active {activeSubscriptions.length === 1 ? "subscription" : "subscriptions"}</span>
+        <div className="subscription-overview__tools">
+          <button
+            ref={addButtonRef}
+            className="subscription-overview__add-button"
+            type="button"
+            aria-expanded={isAddFormOpen}
+            aria-controls="add-subscription-panel"
+            onClick={() => setIsAddFormOpen(true)}
+          >
+            Add subscription
+          </button>
+
+          <div className="subscription-overview__count" aria-live="polite">
+            <strong>{activeSubscriptions.length}</strong>
+            <span>
+              active {activeSubscriptions.length === 1 ? "subscription" : "subscriptions"}
+            </span>
+          </div>
         </div>
       </header>
+
+      {isAddFormOpen && (
+        <AddSubscriptionForm
+          onSubmit={handleAddSubscription}
+          onCancel={() => setIsAddFormOpen(false)}
+        />
+      )}
 
       {activeSubscriptions.length === 0 ? (
         <SubscriptionsEmptyState />

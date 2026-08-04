@@ -1,5 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
 import type { Subscription } from "../domain/types";
 import SubscriptionOverview from "./SubscriptionOverview";
 
@@ -29,11 +30,7 @@ const cancelledSubscription: Subscription = {
 
 describe("SubscriptionOverview", () => {
   it("shows active subscriptions", () => {
-    render(
-      <SubscriptionOverview
-        subscriptions={[activeSubscription, yearlySubscription, cancelledSubscription]}
-      />,
-    );
+    renderOverview([activeSubscription, yearlySubscription, cancelledSubscription]);
 
     expect(
       screen.getByRole("heading", {
@@ -56,14 +53,14 @@ describe("SubscriptionOverview", () => {
   });
 
   it("excludes cancelled subscriptions", () => {
-    render(<SubscriptionOverview subscriptions={[activeSubscription, cancelledSubscription]} />);
+    renderOverview([activeSubscription, cancelledSubscription]);
 
     expect(screen.getByText("Spotify")).toBeInTheDocument();
     expect(screen.queryByText("Minecraft server")).not.toBeInTheDocument();
   });
 
   it("shows the original, monthly, and yearly amounts", () => {
-    render(<SubscriptionOverview subscriptions={[activeSubscription]} />);
+    renderOverview([activeSubscription]);
 
     const subscription = screen.getByRole("article", {
       name: "Spotify",
@@ -75,7 +72,7 @@ describe("SubscriptionOverview", () => {
   });
 
   it("shows an empty state when no active subscriptions exist", () => {
-    render(<SubscriptionOverview subscriptions={[cancelledSubscription]} />);
+    renderOverview([cancelledSubscription]);
 
     expect(
       screen.getByRole("heading", {
@@ -87,11 +84,60 @@ describe("SubscriptionOverview", () => {
     expect(screen.getByText(/your active subscriptions will appear here/i)).toBeInTheDocument();
   });
 
-  it("renders the subscription overview consistently", () => {
-    const { asFragment } = render(
-      <SubscriptionOverview subscriptions={[activeSubscription, yearlySubscription]} />,
+  it("starts and cancels the add-subscription flow", async () => {
+    const user = userEvent.setup();
+
+    renderOverview([activeSubscription]);
+
+    await user.click(
+      screen.getByRole("button", {
+        name: "Add subscription",
+      }),
     );
+
+    expect(
+      screen.getByRole("heading", {
+        level: 2,
+        name: "Add a subscription",
+      }),
+    ).toBeInTheDocument();
+
+    await user.click(
+      screen.getByRole("button", {
+        name: "Cancel",
+      }),
+    );
+
+    expect(
+      screen.queryByRole("heading", {
+        level: 2,
+        name: "Add a subscription",
+      }),
+    ).not.toBeInTheDocument();
+
+    expect(
+      screen.getByRole("button", {
+        name: "Add subscription",
+      }),
+    ).toHaveFocus();
+  });
+
+  it("renders the subscription overview consistently", () => {
+    const { asFragment } = renderOverview([activeSubscription, yearlySubscription]);
 
     expect(asFragment()).toMatchSnapshot();
   });
 });
+
+function renderOverview(subscriptions: readonly Subscription[]) {
+  const onAddSubscription = vi.fn();
+
+  const component = render(
+    <SubscriptionOverview subscriptions={subscriptions} onAddSubscription={onAddSubscription} />,
+  );
+
+  return {
+    onAddSubscription,
+    ...component,
+  };
+}

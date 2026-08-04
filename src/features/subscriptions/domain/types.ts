@@ -11,3 +11,5 @@ export type Subscription = Readonly<{
   billingFrequency: BillingFrequency;
   status: SubscriptionStatus;
 }>;
+
+export type NewSubscription = Readonly<Omit<Subscription, "id" | "status">>;
