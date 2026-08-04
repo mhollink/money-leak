@@ -1,0 +1,57 @@
+name: Feature
+description: Add independently valuable behaviour for the user.
+title: "[Feat] "
+labels:
+  - feature
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A feature should describe user-visible value. Technical implementation can be captured in task sub-issues when necessary.
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User story
+      description: Describe who needs the behaviour, what they need, and why.
+      placeholder: |
+        As a ...
+        I want ...
+        So that ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Explain the problem or opportunity without prescribing an implementation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: List observable and testable behaviour.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope
+      description: State related behaviour that is intentionally excluded.
+    validations:
+      required: false
+
+  - type: textarea
+    id: design-notes
+    attributes:
+      label: Design notes
+      description: Add sketches, content decisions, accessibility considerations, or UX constraints.
+    validations:
+      required: false
