@@ -27,14 +27,27 @@ exports[`SubscriptionOverview > renders the subscription overview consistently 1
         </p>
       </div>
       <div
-        class="subscription-overview__count"
+        class="subscription-overview__tools"
       >
-        <strong>
-          2
-        </strong>
-        <span>
-          active subscriptions
-        </span>
+        <button
+          aria-controls="add-subscription-panel"
+          aria-expanded="false"
+          class="subscription-overview__add-button"
+          type="button"
+        >
+          Add subscription
+        </button>
+        <div
+          aria-live="polite"
+          class="subscription-overview__count"
+        >
+          <strong>
+            2
+          </strong>
+          <span>
+            active subscriptions
+          </span>
+        </div>
       </div>
     </header>
     <ul

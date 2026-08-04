@@ -61,6 +61,35 @@
   font-size: 0.875rem;
 }
 
+.subscription-overview__tools {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.subscription-overview__add-button {
+  min-height: 48px;
+  padding: 0.8rem 1.25rem;
+  border: 1px solid #193320;
+  border-radius: 999px;
+  background: #193320;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  align-self: center;
+}
+
+.subscription-overview__add-button:hover {
+  background: #2d5737;
+}
+
+.subscription-overview__add-button:focus-visible {
+  outline: 3px solid #397347;
+  outline-offset: 3px;
+}
+
 .subscription-list {
   display: grid;
   gap: 1rem;
@@ -188,6 +217,16 @@
   .subscription-overview__header {
     align-items: start;
     flex-direction: column;
+  }
+
+  .subscription-overview__tools {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .subscription-overview__add-button {
+    width: 100%;
   }
 
   .subscription-overview__count {
