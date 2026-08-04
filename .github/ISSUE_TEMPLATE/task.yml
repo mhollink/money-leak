@@ -1,0 +1,49 @@
+name: Technical task
+description: Complete technical work that supports a feature without creating standalone user value.
+title: ""
+labels:
+  - task
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What technical result is required?
+    validations:
+      required: true
+
+  - type: textarea
+    id: parent
+    attributes:
+      label: Parent feature
+      description: Link the feature or epic this task supports.
+      placeholder: "#123"
+    validations:
+      required: true
+
+  - type: textarea
+    id: approach
+    attributes:
+      label: Suggested approach
+      description: Describe constraints or a preferred direction, without over-specifying the implementation.
+    validations:
+      required: false
+
+  - type: textarea
+    id: completion
+    attributes:
+      label: Completion criteria
+      description: List testable technical outcomes.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks and considerations
+      description: Note migration, compatibility, security, privacy, performance, or maintainability concerns.
+    validations:
+      required: false

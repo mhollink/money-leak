@@ -1,0 +1,62 @@
+name: Epic
+description: Define a larger product outcome that will be delivered through multiple feature issues.
+title: ""
+labels:
+  - epic
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use an epic for a larger product outcome. Add independently valuable features as sub-issues.
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: What should be true for the user when this epic is complete?
+      placeholder: Users can understand and manage their recurring financial commitments.
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this outcome valuable?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Describe what belongs in this epic.
+    validations:
+      required: true
+
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope
+      description: State important boundaries that prevent the epic from growing unintentionally.
+    validations:
+      required: true
+
+  - type: textarea
+    id: success
+    attributes:
+      label: Success criteria
+      description: List observable conditions that indicate the epic is complete.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Add relevant decisions, screenshots, research, or constraints.
+    validations:
+      required: false
