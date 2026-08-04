@@ -1,0 +1,172 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SubscriptionOverview > renders the subscription overview consistently 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="subscriptions-heading"
+    class="subscription-overview"
+  >
+    <header
+      class="subscription-overview__header"
+    >
+      <div
+        class="subscription-overview__introduction"
+      >
+        <p
+          class="subscription-overview__eyebrow"
+        >
+          Recurring expenses
+        </p>
+        <h1
+          id="subscriptions-heading"
+        >
+          Active subscriptions
+        </h1>
+        <p>
+          Review what you currently pay and see the monthly and yearly impact of each recurring expense.
+        </p>
+      </div>
+      <div
+        class="subscription-overview__count"
+      >
+        <strong>
+          2
+        </strong>
+        <span>
+          active subscriptions
+        </span>
+      </div>
+    </header>
+    <ul
+      class="subscription-list"
+    >
+      <li
+        class="subscription-list__item"
+      >
+        <article
+          aria-labelledby="subscription-spotify"
+          class="subscription-card"
+        >
+          <header
+            class="subscription-card__header"
+          >
+            <div>
+              <span
+                class="subscription-card__status"
+              >
+                Active
+              </span>
+              <h2
+                id="subscription-spotify"
+              >
+                Spotify
+              </h2>
+            </div>
+            <div
+              class="subscription-card__original-amount"
+            >
+              <strong>
+                € 11,99
+              </strong>
+              <span>
+                per month
+              </span>
+            </div>
+          </header>
+          <dl
+            class="subscription-card__details"
+          >
+            <div>
+              <dt>
+                Billing
+              </dt>
+              <dd>
+                € 11,99 per month
+              </dd>
+            </div>
+            <div>
+              <dt>
+                Monthly equivalent
+              </dt>
+              <dd>
+                € 11,99
+              </dd>
+            </div>
+            <div>
+              <dt>
+                Yearly equivalent
+              </dt>
+              <dd>
+                € 143,88
+              </dd>
+            </div>
+          </dl>
+        </article>
+      </li>
+      <li
+        class="subscription-list__item"
+      >
+        <article
+          aria-labelledby="subscription-runescape"
+          class="subscription-card"
+        >
+          <header
+            class="subscription-card__header"
+          >
+            <div>
+              <span
+                class="subscription-card__status"
+              >
+                Active
+              </span>
+              <h2
+                id="subscription-runescape"
+              >
+                RuneScape membership
+              </h2>
+            </div>
+            <div
+              class="subscription-card__original-amount"
+            >
+              <strong>
+                € 79,99
+              </strong>
+              <span>
+                per year
+              </span>
+            </div>
+          </header>
+          <dl
+            class="subscription-card__details"
+          >
+            <div>
+              <dt>
+                Billing
+              </dt>
+              <dd>
+                € 79,99 per year
+              </dd>
+            </div>
+            <div>
+              <dt>
+                Monthly equivalent
+              </dt>
+              <dd>
+                € 6,67
+              </dd>
+            </div>
+            <div>
+              <dt>
+                Yearly equivalent
+              </dt>
+              <dd>
+                € 79,99
+              </dd>
+            </div>
+          </dl>
+        </article>
+      </li>
+    </ul>
+  </section>
+</DocumentFragment>
+`;
