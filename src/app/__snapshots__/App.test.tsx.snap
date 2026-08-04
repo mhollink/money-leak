@@ -1,0 +1,116 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App > renders the landing page consistently 1`] = `
+<DocumentFragment>
+  <main
+    class="landing-page"
+  >
+    <header
+      class="hero"
+    >
+      <div
+        class="hero__content"
+      >
+        <p
+          class="hero__eyebrow"
+        >
+          Recurring finances, made visible
+        </p>
+        <h1>
+          Money Leak
+        </h1>
+        <p
+          class="hero__introduction"
+        >
+          Understand which recurring payments are leaving your account and make deliberate choices about where your money goes.
+        </p>
+        <a
+          class="hero__action"
+          href="#principles"
+        >
+          Explore the approach
+        </a>
+      </div>
+      <div
+        class="hero__summary"
+      >
+        <span
+          class="hero__summary-label"
+        >
+          Current focus
+        </span>
+        <strong>
+          Subscription inventory
+        </strong>
+        <span>
+          Early development
+        </span>
+      </div>
+    </header>
+    <section
+      aria-labelledby="principles-title"
+      class="principles"
+      id="principles"
+    >
+      <div
+        class="section-heading"
+      >
+        <p
+          class="section-heading__eyebrow"
+        >
+          The starting point
+        </p>
+        <h2
+          id="principles-title"
+        >
+          Start with clarity
+        </h2>
+        <p>
+          Money Leak begins with a small, trustworthy overview before introducing broader financial planning.
+        </p>
+      </div>
+      <div
+        class="principles__grid"
+      >
+        <article
+          class="principle-card"
+        >
+          <h3>
+            Know what you pay
+          </h3>
+          <p>
+            Keep one clear overview of your active subscriptions and recurring expenses.
+          </p>
+        </article>
+        <article
+          class="principle-card"
+        >
+          <h3>
+            See the real impact
+          </h3>
+          <p>
+            Compare monthly costs with their yearly financial impact.
+          </p>
+        </article>
+        <article
+          class="principle-card"
+        >
+          <h3>
+            Celebrate savings
+          </h3>
+          <p>
+            Keep track of cancelled subscriptions and the money they no longer consume.
+          </p>
+        </article>
+      </div>
+    </section>
+    <footer
+      class="footer"
+    >
+      <p>
+        Money Leak is currently in early development.
+      </p>
+    </footer>
+  </main>
+</DocumentFragment>
+`;
